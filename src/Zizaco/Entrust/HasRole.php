@@ -25,9 +25,19 @@ trait HasRole
     public function hasRole( $name )
     {
         foreach ($this->roles as $role) {
-            if( $role->name == $name )
+            if(is_array($name))
             {
-                return true;
+                if(in_array($role->name, $name))
+                {
+                    return true;
+                }
+            }
+            else
+            {
+                if( $role->name == $name )
+                {
+                    return true;
+                }
             }
         }
 
